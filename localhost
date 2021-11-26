@@ -1,0 +1,14 @@
+server {
+	listen 80 default_server;
+	index index.html index.htm;
+	server_name localhost www.localhost;
+	root /home/just-dreamer/PythonProjects/HW3-VK/templates;
+
+	location ~ ^.+\.(png|jpeg|jpg)$ {
+		root /home/just-dreamer/PythonProjects/HW3-VK/public;
+	}
+
+        location ~ ^/API/.*$ {
+		proxy_pass http://127.0.0.1:8000;
+	}
+}
